@@ -1,0 +1,32 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/user">
+            <img src="../public/images/logo.png">
+        </a>
+        <a class="navbar-item" href="/user">
+            <p class="title marroia">StudyBook</p>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class ="button is-ligth is-danger"  href="/logina/logout">
+                        <span class="icon">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </span>
+                        <span>logout</span>
+                    </a>
+                    <a class="button is-warning is-light" href="/user">
+                        @<%=erabiltzailea%>
+                        <figure class="image ">
+                            <img class="is-rounded" src="../public/images/logo.png"/>
+                        </figure>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>

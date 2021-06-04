@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <% if(message.length > 0) { %>
+        <div class="alert alert-danger">
+            <%= message %>
+        </div>
+    <% } %>
+    <div class="column mx-4">
+        <div class="box">
+
+
+            <form action="/logina/signup" method="post">
+                <div class="field">
+                    <label class="label" for="email">Email</label>
+                    <div class="control has-icons-left">
+                        <input  class="input" type="email" name="email" required>
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="username">Erabiltzaile izena</label>
+                    <div class="control has-icons-left">
+                        <input  class="input" type="text" name="username" required>
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="password">Password</label>
+                    <div class="control has-icons-left">
+                        <input  class="input" type="password" name="password">
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-key"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="izena">Izena</label>
+                    <input  class="input" type="text" name="izena" class="form-control" required>
+                </div>
+                <div class="field">
+                     <label class="label" for="izena">Abizena</label>
+                     <input  class="input" type="text" name="abizena" class="form-control" required>
+                </div>
+                <div class="field">
+                    <label class="label" for="adina">Adina</label>
+                    <input  class="input" type="number" size="4" name="adina" min="18" class="form-control" required>
+                </div>
+                <div class="field">
+                    <label class="label" for="mezua">Mezua</label>
+                    <div class="control has-icons-left">
+                        <input  class="input" type="text" name="mezua" required>
+                        <span class="icon is-small is-left">
+                              <i class="fas fa-sticky-note"></i>
+                            </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="ikastetxea">Ikastetxea</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="text" name="ikastetxea" required>
+                        <span class="icon is-small is-left">
+                              <i class="fas fa-university"></i>
+                            </span>
+                    </div>
+
+                </div>
+                <input type="submit" class="button is-info" value="Sortu kontua!" required>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+main {
+  margin-top: 100px;
+  margin-bottom: 80px;
+}
+
+.marroia{
+  color:#694906;
+}
+.footer-user {
+  left:0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.gorria {
+  color:#FA5A57;
+}
+.bihotzbeltz{
+    color:#3D2322;
+}
+
+.txuria{
+  color:white;
+}
+
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.footer {
+  flex: 1;
+}
+.box{
+  background-color:#FFF4DE;
+}
+.norgaraBox{
+    background-color:#E0FFDE;
+}
+
+.kontaktuaBox{
+    background-color:#FFD5B8;
+}
+
+.erregistratuBox{
+    background-color:#85D5FF;
+}
+
+.fk{
+  color:#403B31;
+}
+
+.ikonoBotoia{
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: none; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+.botoia{
+   background-color:#FFEBC4;
+}
+
+a{
+  color:#A88D58;
+}

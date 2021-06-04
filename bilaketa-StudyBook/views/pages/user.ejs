@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header-user'); %>
+</header>
+
+<main>
+    <div class="columns is-vcentered">
+
+        <div classs="column mx-6">
+            <section class="section is-medium">
+                <h1 class="title marroia">Ongi etorri!!</h1>
+                <h2 class="subtitle">
+                    <b>@<%=erabiltzailea%></b>
+                </h2>
+            </section>
+        </div>
+        <div class="column mx-6">
+            <div class="box">
+                <form action="/bilatu/erab" method="post">
+                    <nav class="level">
+                        <div class="level-left">
+
+                            <p class="control has-icons-left">
+                                <input class="input level-item is-rounded" type="text" name="query" placeholder="Erabiltzaile edo komunitatea">
+                                <span class="icon is-small is-left">
+                                      <i class="fas fa-search"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <level class="level-right">
+                            <button class="level-item button is-outlined" type="submit" value="ERABILTZAILEA">
+                                <span class="icon">
+                                 <i class="fas fa-user"></i>
+                                </span>
+                                <span>Erabiltzailea</span>
+                            </button>
+                            <button class="level-item button is-outlined" type="submit" value="KOMUNITATEA" formaction="/bilatu/kom">
+                                <span class="icon">
+                                    <i class="fas fa-users"></i>
+                                </span>
+                                <span>Komunitatea</span></button>
+                        </level>
+                    </nav>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <% if(message.length > 0) { %>
+        <div class="notification is-danger column mx-6">
+            <%= message %>
+        </div>
+    <% } %>
+</main>
+
+<footer>
+    <%- include('../partials/footer-user'); %>
+</footer>
+
+</body>
+</html>

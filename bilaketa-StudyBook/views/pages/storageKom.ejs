@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header-user'); %>
+</header>
+
+<main>
+        <section class="section is-small">
+            <h1 class="title marroia"><i class="fas  fa-users mr-3"></i><%=komIzena%></h1>
+            <h2 class="subtitle">
+                @<%=erabiltzailea%>
+            </h2>
+        </section>
+        <div class="columns">
+            <div class="column is-one-quarter mx-3">
+                <form action="/komunitatea/upload/<%=komIzena%>" method="POST" enctype="multipart/form-data">
+                    <div class="file has-name">
+                        <label class="file-label">
+                            <input class="file-input" name="file" id="file" accept="application/pdf, application/msword, application/vnd.ms-powerpoint, application/vnd.ms-excel, application/vnd.oasis.opendocument.text, application/vnd.oasis.opendocument.presentation, application/zip" type="file">
+                            <span class="file-cta">
+                              <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                              </span>
+                              <span class="file-label">
+                                Fitxategia Aukeratu...
+                              </span>
+                            </span>
+                        </label>
+                    </div>
+                    <p id="fitxategiIzena"></p>
+                    <input type="submit" value="IGO!" class="button is-warning mt-2">
+                </form>
+            </div>
+            <div class="column is-three-quarters mx-3">
+                <% if(kom){ %>                                                                    <!-- IF FILES FROM -->
+                <% kom.forEach(function(file) { %>
+                    <div class="box mb-3 mx-3">
+                        <% if(file.isImage) { %>
+                            <p class="title is-5"><%= file.name %></p>
+                            <p class="subtitle is-6"><a href="/bilatu/<%=file.owner %>">Sortzailea: <%=file.owner %></a></p>
+                            <img src="/storage/image/<%= file.name %>" alt="">
+                            <%if(erabiltzailea==file.owner){%>
+                            <form method="POST" action="/komunitatea/files/<%=komIzena%>/<%= file.name%>?_method=DELETE">      <!-- take the file id and send it as DELETE -->
+                                <button class="button is-danger ">
+                                    <span>
+                                        <i class="fas fa-trash-alt mr-2"></i>
+                                    </span>
+                                    <span>EZABATU</span>
+                                </button>
+                            </form>
+                            <%} %><!-- If it is an image, well get image/FILENAME-->
+                        <% } else{ %>
+                            <nav class="level">
+                                <div class="level-left">
+                                    <p class="title is-4 level-item"><%= file.name %></p>
+
+                                </div>
+
+                                <div class="level-right is-mobile">
+                                        <%if(file.like.indexOf(erabiltzailea)==-1){%>
+                                            <div class = "dropdown is-hoverable">
+                                                <div class = "dropdown-trigger">
+                                                    <a class="is-clickable level-item mx-2"><%=file.like.length%></a>
+                                                </div>
+                                                <div class = "dropdown-menu" id = "dropdown-menu" role = "menu">
+                                                    <div class = "dropdown-content">
+                                                        <%file.like.forEach(function(likeErab){%>
+                                                            <a class="dropdown-item" href="/bilatu/<%=likeErab%>"> <%=likeErab %></a>
+                                                        <%})%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <%if(erabiltzailea!=file.owner){%>
+                                                <a class="is-vcentered fa-lg level-item mx-2" href="/komunitatea/like/<%=komIzena%>/<%= file._id %>"><i class="fas fa-heart"></i></a>
+                                                <%if(file.dislike.indexOf(erabiltzailea)==-1){%>
+                                                    <a class="is-vcentered fa-lg level-item mx-2" href="/komunitatea/dislike/<%=komIzena%>/<%= file._id %>"><i class="fas fa-heart-broken"></i></a>
+
+                                                <%} else{%><a class="is-vcentered bihotzbeltz fa-lg level-item mx-2" href="/komunitatea/dislike/<%=komIzena%>/<%= file._id %>"><i class="fas fa-heart-broken"></i></a>
+                                                <%}%>
+                                            <%}%>
+                                            <a class="is-clickable level-item mx-2">-<%=file.dislike.length%></a>
+                                        <%} else{%>
+                                            <div class = "dropdown is-hoverable">
+                                                <div class = "dropdown-trigger">
+                                                    <a class="is-clickable gorria mx-2 level-item"><%=file.like.length%></a>
+                                                </div>
+                                                <div class = "dropdown-menu" id = "dropdown-menu" role = "menu">
+                                                    <div class = "dropdown-content">
+                                                        <%file.like.forEach(function(likeErab){%>
+                                                            <a class="dropdown-item" href="/bilatu/<%=likeErab%>"> <%=likeErab %></a>
+                                                        <%})%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <%if(erabiltzailea!=file.owner){%>
+                                                <a class="gorria is-vcentered fa-lg level-item mx-2" href="/komunitatea/like/<%=komIzena%>/<%= file._id %>"><i class="fas fa-heart"></i></a>
+                                                <%if(file.dislike.indexOf(erabiltzailea)==-1){%>
+                                                    <a class="is-vcentered fa-lg level-item mx-2" href="/komunitatea/dislike/<%=komIzena%>/<%= file._id %>"><i class="fas fa-heart-broken"></i></a>
+                                                <%} else{%>
+                                                    <a class="is-vcentered bihotzbeltz fa-lg level-item mx-2" href="/komunitatea/dislike/<%=komIzena%>/<%= file._id %>"><i class="fas fa-heart-broken"></i></a>
+                                                <%}%>
+                                            <%}%>
+                                            <a class="is-clickable level-item mx-2">-<%=file.dislike.length%></a>
+
+                                        <%}%>
+                                    <form method="GET" action="/komunitatea/files/<%=komIzena%>/<%= file._id %>">
+                                        <button class="button is-warning mx-2 level-item">
+                                            <span>
+                                                <i class="fas fa-eye mr-2"></i>
+                                            </span>
+                                            <span>BISTARATU</span></button>            <!-- Trigger a GET to /files/FILENAME -->
+                                    </form>
+                                    <%if(erabiltzailea==file.owner){%>
+                                    <form method="POST" action="/komunitatea/files/<%=komIzena%>/<%= file.name%>?_method=DELETE">      <!-- take the file id and send it as DELETE -->
+                                        <button class="button is-danger mx-2 level-item">
+                                            <span>
+                                                <i class="fas fa-trash-alt mr-2"></i>
+                                            </span>
+                                            <span>EZABATU</span></button>
+                                    </form>
+                                    <%} %>
+                                </div>
+                            </nav>
+
+                                <a href="/bilatu/<%=file.owner %>"><p class="subtitle is-6"><i class="fas fa-user mr-1"></i> Sortzailea: <%=file.owner %></p></a><!--Show the filename-->        <!-- nik egindakoa -->
+                                <p class="subtitle is-6 mt-1"><i class="fas fa-calendar-alt mr-1"></i> Sortua: <%= file.createdAt.getUTCFullYear() %>/<%= file.createdAt.getUTCMonth()+1 %>/<%= file.createdAt.getUTCDate()%> </p>
+                        <% } %>
+
+                            <p class="title is-6 mt-2">Komentarioak:</p>
+                            <%file.komentarioak.forEach(function(komentarioa){%>
+                            <a href="/bilatu/<%=komentarioa.erabiltzailea%>"><p class="subtitle is-6 mt-2"><i class="fas fa-user mr-1"></i> <%=komentarioa.erabiltzailea%>: <%=komentarioa.mezua%></p></a><!--Show the filename-->        <!-- nik egindakoa -->
+                            <%})%>
+
+                            <form action="/komunitatea/<%=komIzena%>/<%=file._id%>" method="POST">
+                                <div class="field has-addons mt-2">
+                                    <p class="control">
+                                        <input class="input  is-rounded" type="text" placeholder="Zure komentarioa sartu" name="komentarioa" id="komentarioa">
+                                    </p>
+                                    <p class="control">
+                                        <button type="submit"  class="button is-rounded is-warning"><i class="fas fa-plus"></i> </button>
+                                    </p>
+                                </div>
+                            </form>
+                    </div>
+                <% }) %>
+                <% } else { %>
+                    <p>Ez dago fitxategirik komunitatean D:</p>
+                <% } %>
+            </div>
+        </div>
+
+</main>
+
+<footer>
+    <%- include('../partials/footer-user'); %>
+</footer>
+<script>
+    var fitxategia=document.getElementById('file');
+    fitxategia.addEventListener('change',izenaErakutsi);
+    function izenaErakutsi(){
+        document.getElementById('fitxategiIzena').innerHTML=fitxategia.value;
+    }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var dropdown = document.querySelector('.dropdown');
+            dropdown.addEventListener('click', function(event) {
+                event.stopPropagation();
+                dropdown.classList.toggle('is-active');
+            });
+        });
+</script>
+
+</body>
+</html>

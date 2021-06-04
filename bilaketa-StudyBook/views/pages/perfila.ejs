@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header-user'); %>
+</header>
+
+<main>
+        <div classs="column is-two-thirds is mx-6">
+            <section class="section is-small">
+                 <h1 class="title marroia">Perfila</h1>
+                                <h2 class="subtitle">
+                                    @<%=erabiltzailea%>
+                                </h2></br>
+
+                <br/>
+                <div class="box">
+                <h2 class="subtitle">
+                                    <b>@<%=erabiltzailea%></b>
+                                </h2>
+
+                    <h2 class="subtitle is-bold is-4">
+                        <b><%=datuak.izena%> <%=datuak.abizenak%>, <%=datuak.adina%> urte</b>
+                    </h2>
+
+
+
+                    <h2 class="subtitle is-bold is-5">
+                        <b>Mezua:</b>  <%=datuak.mezua%>
+                    </h2>
+
+                    <h2 class="subtitle is-bold is-5">
+                        <b>Ikastetxea:</b> <%=datuak.ikastetxea%>
+                    </h2>
+
+                </div>
+            </section>
+    </div>
+
+
+
+</main>
+
+<footer>
+    <%- include('../partials/footer-user'); %>
+</footer>
+
+</body>
+</html>

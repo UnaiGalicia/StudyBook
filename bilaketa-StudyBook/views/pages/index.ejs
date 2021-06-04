@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="columns is-vcentered is-centered">
+        <div class="column is-three-fifths">
+            <section class="section is-medium">
+                <h1 class="title" class="fk"><b>Ongi etorri StudyBook plataformara</b></h1></br>
+                                <h1>
+                                <span class="icon-text mt-2">
+                                  <span class="icon">
+                                    <i class="fas fa-search fa-2x fk"></i>
+                                  </span>
+                                  <font size="+2" class="fk" >&ensp;INFORMAZIOA BILATU ETA PARTEKATU</font>
+                                </span></br></br>
+                                <span class="icon-text mt-2" >
+                                  <span class="icon ">
+                                     <i class="fas fa-user fa-2x fk"></i>
+                                  </span>
+                                <font size="+2" class="fk">&ensp;SORTU PERFILA ETA ADITUEKIN EZTABAIDATU</font>
+                                 </span></br></br>
+                                 <span class="icon-text mt-2">
+                                   <span class="icon">
+                                     <i class="fas fa-users fa-2x fk"></i>
+                                   </span>
+                                   <font size="+2" class="fk">&ensp;MURRIZTU IRISMENA TALDEAK OSATUZ</font>
+                                 </span></br></br>
+                                 <span class="icon-text mt-2">
+                                   <span class="icon">
+                                     <i class="far fa-star fa-2x fk"></i>
+                                   </span>
+                                   <font size="+2" class="fk">&ensp;IRAGAZI KALITATEZKO INFORMAZIOA</font>
+                                 </span>
+                                </h1>
+            </section>
+        </div>
+        <div class="column mx-2">
+            <div class="box">
+            <font size="+2" class="fk">Sartu kontura</font>
+                <form action="/logina" method="post">
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" name="username" placeholder="Erabiltzaile izena">
+                            <span class="icon is-small is-left">
+                                  <i class="fas fa-user"></i>
+                                </span>
+                            <span class="icon is-small is-right">
+                                  <i class="fas fa-check"></i>
+                                </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="password" name="password" placeholder="Pasahitza">
+                            <span class="icon is-small is-left">
+                                  <i class="fas fa-lock"></i>
+                                </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            <button class="button is-success type="submit">
+                                Goazen
+                            </button>
+
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <% if(message.length > 0) { %>
+                <div class="notification is-danger">
+                    <%= message %>
+                </div>
+            <% } %>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
