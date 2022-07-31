@@ -1,12 +1,12 @@
-#StudyBook
+# StudyBook
 ***
-##A platform to share documents between students or professors
+## A platform to share documents between students or professors
 
 StudyBook is a college project created by Aintzel Bereziartua, Unai Galicia and Iker Hernandez. The aim of the project is to create an open platform that enables the sharing of University related files to students and proffesors.
 
 Thanks to StudyBook, students can store information either privately or publicly, they can share their documents with class partners, professors or with the whole university, and can likewise search and get documents from other students or professors. StudyBook also allows professors or researchers to share their work among colleagues or students.
 
-###Functionalities
+### Functionalities
 
 StudyBook offers an easy-to-use interface, and provides these functionalities to users:
 
@@ -17,7 +17,7 @@ StudyBook offers an easy-to-use interface, and provides these functionalities to
     
 3. Each uploaded file has a section for comments, and a count of likes/dislikes.
 
-###Technologies used
+### Technologies used
 
 - In order to use a document-based DB, MongoDB was chosen. Precisely, a MongoDB Atlas instance was used. This instance is currently shut down. The Mongoose middleware was also used to manage the DB.
 - The files were uploaded directly into the DB instead of using a file system. This option was in part chosen as the academic documents were not expected to exceed 5 MB. Costs and time were also big factors. However, this was intended to be replaced with the use of Amazon S3, for example.
@@ -28,7 +28,7 @@ StudyBook offers an easy-to-use interface, and provides these functionalities to
 - An Amazon EC2 instance was used to deploy the app. This instance is currently shut down.
 
 ***
-###Notes
+### Notes
 - The GUI is completely written in Basque.
 - The app can be locally tested, but the MongoDB URI must be replaced with the local DB URI.
 - The app was developed using the IntelliJ IDEA IDE.
